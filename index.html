@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imprezi | Editor</title>
+    <link href="editor/summernote/summernote.css" rel="stylesheet"/>
+    <link href="editor/summernote/summernote-bs3.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/impress.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="fonts/glyphicons-pro/glyphicons-pro.css" rel="stylesheet"/>
+    <link href="fonts/font-awesome/font-awesome.css" rel="stylesheet"/>
+    <link href="css/imprezi.css" rel="stylesheet"/>
+    <style id="user_style" type="text/css"></style>
+</head>
+<body>
+<div id="impress"></div>
+<div id="editor">
+    <div id="editor-css">
+        <textarea id="editor-css-pre"></textarea>
+    </div>
+    <div id="editor-handle">
+        <span class="glyphicons glyphicons-brush fs47"></span>
+    </div>
+</div>
+<div id="toolbar">
+    <div id="icon">
+        <a href="play.html" target="_blank"><span class="glyphicons glyphicons-eye_open"></span></a>
+    </div>
+    <hr/>
+    <div id="positions">
+        <label>Positions:</label><br>
+        <label>X:</label><input id="pos_x" type="text" placeholder="X"/><br>
+        <label>Y:</label><input id="pos_y" type="text" placeholder="Y"/><br>
+        <label>Z:</label><input id="pos_z" type="text" placeholder="Z"/>
+    </div>
+    <hr/>
+    <div id="rotate">
+        <label>Rotates:</label><br>
+        <label>X:</label><input id="pos_rx" type="text" placeholder="X"/><br>
+        <label>Y:</label><input id="pos_ry" type="text" placeholder="Y"/><br>
+        <label>Z:</label><input id="pos_rz" type="text" placeholder="Z"/>
+    </div>
+    <hr/>
+    <div id="scale">
+        <label>Scale:</label><input id="pos_scale" type="text" placeholder="scale"/>
+    </div>
+    <hr/>
+    <div id="hd-bg-color">
+        BG Color
+    </div>
+    <div id="bg-color">
+        <div class="btn-group"
+             style="margin: 0px 5px; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; letter-spacing: normal; line-height: 20px;">
+            <div class="note-palette-title"
+                 style="margin: 2px 7px; font-size: 12px; text-align: center; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238);">
+                Background Color
+            </div>
+            <div class="note-color-reset" data-event="backColor" data-value="inherit" title="Default"
+                 style="padding: 0px 3px; margin: 3px; font-size: 11px; cursor: pointer; border-radius: 5px;">Set default
+            </div>
+            <div><br></div>
+            <div class="note-color-palette" data-target-event="backColor" style="line-height: 1;">
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#000000"
+                            title="#000000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#424242"
+                            title="#424242" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(66, 66, 66);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#636363"
+                            title="#636363" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 99, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C9C94"
+                            title="#9C9C94" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 156, 148);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEC6CE"
+                            title="#CEC6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#EFEFEF"
+                            title="#EFEFEF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(239, 239, 239);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7F7F7"
+                            title="#F7F7F7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 247, 247);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFFFFF"
+                            title="#FFFFFF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 255, 255);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF0000"
+                            title="#FF0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF9C00"
+                            title="#FF9C00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 156, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFFF00"
+                            title="#FFFF00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 255, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#00FF00"
+                            title="#00FF00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 255, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#00FFFF"
+                            title="#00FFFF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 255, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#0000FF"
+                            title="#0000FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 0, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C00FF"
+                            title="#9C00FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 0, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF00FF"
+                            title="#FF00FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 0, 255);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7C6CE"
+                            title="#F7C6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFE7CE"
+                            title="#FFE7CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 231, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFEFC6"
+                            title="#FFEFC6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 239, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6EFD6"
+                            title="#D6EFD6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 239, 214);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEDEE7"
+                            title="#CEDEE7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 222, 231);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEE7F7"
+                            title="#CEE7F7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 231, 247);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6D6E7"
+                            title="#D6D6E7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 214, 231);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E7D6DE"
+                            title="#E7D6DE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 214, 222);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E79C9C"
+                            title="#E79C9C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 156, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFC69C"
+                            title="#FFC69C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 198, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFE79C"
+                            title="#FFE79C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 231, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B5D6A5"
+                            title="#B5D6A5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 214, 165);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#A5C6CE"
+                            title="#A5C6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(165, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9CC6EF"
+                            title="#9CC6EF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 198, 239);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B5A5D6"
+                            title="#B5A5D6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 165, 214);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6A5BD"
+                            title="#D6A5BD" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 165, 189);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E76363"
+                            title="#E76363" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 99, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7AD6B"
+                            title="#F7AD6B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 173, 107);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFD663"
+                            title="#FFD663" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 214, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#94BD7B"
+                            title="#94BD7B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(148, 189, 123);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#73A5AD"
+                            title="#73A5AD" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(115, 165, 173);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#6BADDE"
+                            title="#6BADDE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(107, 173, 222);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#8C7BC6"
+                            title="#8C7BC6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(140, 123, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#C67BA5"
+                            title="#C67BA5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(198, 123, 165);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CE0000"
+                            title="#CE0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E79439"
+                            title="#E79439" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 148, 57);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#EFC631"
+                            title="#EFC631" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(239, 198, 49);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#6BA54A"
+                            title="#6BA54A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(107, 165, 74);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#4A7B8C"
+                            title="#4A7B8C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(74, 123, 140);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#3984C6"
+                            title="#3984C6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(57, 132, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#634AA5"
+                            title="#634AA5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 74, 165);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#A54A7B"
+                            title="#A54A7B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(165, 74, 123);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C0000"
+                            title="#9C0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B56308"
+                            title="#B56308" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 99, 8);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#BD9400"
+                            title="#BD9400" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(189, 148, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#397B21"
+                            title="#397B21" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(57, 123, 33);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#104A5A"
+                            title="#104A5A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(16, 74, 90);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#085294"
+                            title="#085294" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(8, 82, 148);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#311873"
+                            title="#311873" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(49, 24, 115);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#731842"
+                            title="#731842" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(115, 24, 66);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#630000"
+                            title="#630000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#7B3900"
+                            title="#7B3900" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(123, 57, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#846300"
+                            title="#846300" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(132, 99, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#295218"
+                            title="#295218" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(41, 82, 24);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#083139"
+                            title="#083139" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(8, 49, 57);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#003163"
+                            title="#003163" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 49, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#21104A"
+                            title="#21104A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(33, 16, 74);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#4A1031"
+                            title="#4A1031" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(74, 16, 49);"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div id="hd-slide-color">
+        Slide Color
+    </div>
+    <div id="bg-slide">
+        <div class="btn-group"
+             style="margin: 0px 5px; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; letter-spacing: normal; line-height: 20px;">
+            <div class="note-palette-title"
+                 style="margin: 2px 7px; font-size: 12px; text-align: center; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238);">
+                Slide Background Color
+            </div>
+            <div class="note-color-reset" data-event="backColor" data-value="inherit" title="Transparent"
+                 style="padding: 0px 3px; margin: 3px; font-size: 11px; cursor: pointer; border-radius: 5px;">Set Transparent
+            </div>
+            <div><br></div>
+            <div class="note-color-palette" data-target-event="backColor" style="line-height: 1;">
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#000000"
+                            title="#000000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#424242"
+                            title="#424242" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(66, 66, 66);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#636363"
+                            title="#636363" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 99, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C9C94"
+                            title="#9C9C94" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 156, 148);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEC6CE"
+                            title="#CEC6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#EFEFEF"
+                            title="#EFEFEF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(239, 239, 239);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7F7F7"
+                            title="#F7F7F7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 247, 247);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFFFFF"
+                            title="#FFFFFF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 255, 255);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF0000"
+                            title="#FF0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF9C00"
+                            title="#FF9C00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 156, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFFF00"
+                            title="#FFFF00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 255, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#00FF00"
+                            title="#00FF00" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 255, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#00FFFF"
+                            title="#00FFFF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 255, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#0000FF"
+                            title="#0000FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 0, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C00FF"
+                            title="#9C00FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 0, 255);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FF00FF"
+                            title="#FF00FF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 0, 255);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7C6CE"
+                            title="#F7C6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFE7CE"
+                            title="#FFE7CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 231, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFEFC6"
+                            title="#FFEFC6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 239, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6EFD6"
+                            title="#D6EFD6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 239, 214);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEDEE7"
+                            title="#CEDEE7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 222, 231);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CEE7F7"
+                            title="#CEE7F7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 231, 247);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6D6E7"
+                            title="#D6D6E7" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 214, 231);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E7D6DE"
+                            title="#E7D6DE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 214, 222);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E79C9C"
+                            title="#E79C9C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 156, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFC69C"
+                            title="#FFC69C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 198, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFE79C"
+                            title="#FFE79C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 231, 156);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B5D6A5"
+                            title="#B5D6A5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 214, 165);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#A5C6CE"
+                            title="#A5C6CE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(165, 198, 206);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9CC6EF"
+                            title="#9CC6EF" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 198, 239);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B5A5D6"
+                            title="#B5A5D6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 165, 214);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#D6A5BD"
+                            title="#D6A5BD" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(214, 165, 189);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E76363"
+                            title="#E76363" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 99, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#F7AD6B"
+                            title="#F7AD6B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(247, 173, 107);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#FFD663"
+                            title="#FFD663" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(255, 214, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#94BD7B"
+                            title="#94BD7B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(148, 189, 123);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#73A5AD"
+                            title="#73A5AD" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(115, 165, 173);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#6BADDE"
+                            title="#6BADDE" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(107, 173, 222);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#8C7BC6"
+                            title="#8C7BC6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(140, 123, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#C67BA5"
+                            title="#C67BA5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(198, 123, 165);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#CE0000"
+                            title="#CE0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(206, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#E79439"
+                            title="#E79439" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(231, 148, 57);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#EFC631"
+                            title="#EFC631" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(239, 198, 49);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#6BA54A"
+                            title="#6BA54A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(107, 165, 74);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#4A7B8C"
+                            title="#4A7B8C" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(74, 123, 140);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#3984C6"
+                            title="#3984C6" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(57, 132, 198);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#634AA5"
+                            title="#634AA5" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 74, 165);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#A54A7B"
+                            title="#A54A7B" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(165, 74, 123);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#9C0000"
+                            title="#9C0000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(156, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#B56308"
+                            title="#B56308" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(181, 99, 8);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#BD9400"
+                            title="#BD9400" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(189, 148, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#397B21"
+                            title="#397B21" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(57, 123, 33);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#104A5A"
+                            title="#104A5A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(16, 74, 90);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#085294"
+                            title="#085294" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(8, 82, 148);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#311873"
+                            title="#311873" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(49, 24, 115);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#731842"
+                            title="#731842" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(115, 24, 66);"></button>
+                </div>
+                <div class="note-color-row" style="height: 20px;">
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#630000"
+                            title="#630000" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(99, 0, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#7B3900"
+                            title="#7B3900" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(123, 57, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#846300"
+                            title="#846300" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(132, 99, 0);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#295218"
+                            title="#295218" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(41, 82, 24);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#083139"
+                            title="#083139" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(8, 49, 57);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#003163"
+                            title="#003163" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(0, 49, 99);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#21104A"
+                            title="#21104A" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(33, 16, 74);"></button>
+                    <button type="button" class="note-color-btn" data-event="backColor" data-value="#4A1031"
+                            title="#4A1031" data-toggle="button" tabindex="-1"
+                            style="width: 20px; height: 20px; padding: 0px; border: 1px solid rgb(255, 255, 255); background-color: rgb(74, 16, 49);"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="add">
+        <span class="glyphicons glyphicons-circle_plus"></span><br>
+    </div>
+    <div id="save">
+        <span class="glyphicons glyphicons-pen"></span><br>
+        Save
+    </div>
+    <div id="transformer">
+        <div id="transformer_prev" class="glyphicons glyphicons-circle_arrow_left"></div>
+        <input id="transformer_num" type="text"/>
+
+        <div id="transformer_next" class="glyphicons glyphicons-circle_arrow_right"></div>
+    </div>
+</div>
+<div id="loading"></div>
+<script src="js/jquery-1.9.1.min.js" type="application/javascript"></script>
+<script src="js/jquery-ui.min.js" type="application/javascript"></script>
+<script src="js/bootstrap.js" type="application/javascript"></script>
+<script src="editor/summernote/summernote.min.js" type="application/javascript"></script>
+<script src="js/imprezi.js" type="application/javascript"></script>
+<script type="application/javascript">
+    $(window).on("load", function () {
+        load();
+        impress_load();
+        bind_inputs();
+        ReadyEditor();
+
+        setTimeout(function () {
+            $("#loading").hide();
+        }, 300);
+    });
+</script>
+</body>
+</html>

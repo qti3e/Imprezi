@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imprezi</title>
+    <link href="editor/summernote/summernote.css" rel="stylesheet"/>
+    <link href="editor/summernote/summernote-bs3.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="fonts/glyphicons-pro/glyphicons-pro.css" rel="stylesheet"/>
+    <link href="fonts/font-awesome/font-awesome.css" rel="stylesheet"/>
+    <link href="css/imprezi.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="content">
+    <textarea id="input"></textarea>
+    <input type="button" id="import" value="Import">
+    <input type="button" id="export" value="Export">
+</div>
+<div id="loading"></div>
+<script src="js/jquery-1.9.1.min.js" type="application/javascript"></script>
+<script src="js/jquery-ui.min.js" type="application/javascript"></script>
+<script src="js/bootstrap.js" type="application/javascript"></script>
+<script type="application/javascript">
+    $(window).on("load", function () {
+        $("#import").click(function(){
+            var input           = JSON.parse($("#input").val());
+            localStorage.css    = input.css;
+            localStorage.slide  = input.slide;
+        });
+        $("#export").click(function(){
+            var re = {
+                "css"   :localStorage.css,
+                "slide" :localStorage.slide
+            };
+            $("#input").val(JSON.stringify(re));
+        });
+        setTimeout(function () {
+            $("#loading").hide();
+        }, 300);
+    });
+</script>
+</body>
+</html>

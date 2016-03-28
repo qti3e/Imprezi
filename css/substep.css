@@ -1,0 +1,92 @@
+/* forcing a width onto all steps */
+.step {
+  position: relative;
+  margin: 20px auto;
+  width: 900px;
+  padding: 40px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+}
+
+/* give all steps a light opacity by default */
+.impress-enabled .step {
+  opacity: 0.2;
+  -webkit-transition: opacity 1s;
+  -moz-transition:    opacity 1s;
+  -ms-transition:     opacity 1s;
+  -o-transition:      opacity 1s;
+  transition:         opacity 1s;
+}
+
+/* bring steps up to full opacity when active */
+.impress-enabled .step.active { 
+  opacity: 1;
+}
+
+
+/*
+  This selector will grab all substeps in a browser that
+  is impress.js compatible, and set their opacity to zero.
+  This also sets up any property change to be transitioned
+  over 1 second
+*/
+.impress-enabled .substep {
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -moz-transition:    all 1s;
+  -ms-transition:     all 1s;
+  -o-transition:      all 1s;
+  transition:         all 1s;  
+}
+
+/*
+  if a substep gets set to active it will get an
+  opacity of 1, transitioned over 1 second by the 
+  previous selector 
+*/
+.impress-enabled .substep.active {
+  opacity: 1;
+}
+
+/*
+  when a substep has focus it is 'present'
+  so we add some color to make it all fancy
+*/
+.impress-enabled .substep.present { 
+  color: rgb(100, 135, 195);
+}
+
+/* 
+  just setting the div substep styles 
+  to something interesting...
+  containing div needs a forced height 
+*/
+#works-on-divs-too {
+  height: 400px;
+}
+
+/*
+  position the hidden divs off screen
+*/
+#works-on-divs-too div {
+  position: absolute;
+  left: -500px;
+  font-size: 1.8rem;
+}
+
+/* 
+  let them transition on screen when active 
+*/
+#works-on-divs-too div.active {
+  position: relative;
+  left: 0;
+  margin-left: 15% 
+}
+
+.right {
+  float: right;
+}

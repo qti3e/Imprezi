@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imprezi | Player</title>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/impress.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="fonts/glyphicons-pro/glyphicons-pro.css" rel="stylesheet" />
+    <link href="css/imprezi.css" rel="stylesheet"/>
+    <style id="user_style" type="text/css"></style>
+</head>
+<body>
+<div id="impress"></div>
+<div id="loading"></div>
+<script src="js/jquery-1.9.1.min.js" type="application/javascript"></script>
+<script src="js/jquery-ui.min.js" type="application/javascript"></script>
+<script src="js/bootstrap.js" type="application/javascript"></script>
+<script src="js/impress.js" type="application/javascript"></script>
+<script type="application/javascript">
+    $(window).on("load",function(){
+        function load(){
+            if(!localStorage.slide){
+                localStorage.slide = '<div class="step slide"><h1>Hello!</h1></div>';
+            }
+            $("#user_style").html(localStorage.css);
+            $("#impress").html(localStorage.slide);
+        }
+        if($("#impress").html() == ""){
+            load();
+        }
+        impress_load();
+        setTimeout(function() {
+            $("#loading").hide();
+        }, 300);
+    });
+</script>
+</body>
+</html>
